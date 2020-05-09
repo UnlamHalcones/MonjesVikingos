@@ -6,9 +6,11 @@ import java.math.BigDecimal;
 public class MonjeVikingo extends Vikingo {
 	private Estado estado;
 	private BigDecimal vida;
-	private BigDecimal ataque = BigDecimal.TEN;
+	private BigDecimal ataque;
 	
 	public MonjeVikingo() {
+		this.vida = new BigDecimal(100);
+		this.ataque = BigDecimal.TEN;
 		estado = new Estado();
 	}
 	

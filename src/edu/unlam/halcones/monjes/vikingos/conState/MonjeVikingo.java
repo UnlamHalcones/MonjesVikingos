@@ -8,16 +8,18 @@ import edu.unlam.halcones.monjes.vikingos.conState.estados.Normal;
 public class MonjeVikingo extends Vikingo {
 	private Estado estado;
 	private BigDecimal vida;
-	private BigDecimal ataque = BigDecimal.TEN;
+	private BigDecimal ataque;
 
 	public MonjeVikingo() {
+		this.vida = new BigDecimal(100);
+		this.ataque = BigDecimal.TEN;
 		this.estado = new Normal();
 	}
 
 	@Override
 	public void atacar(Vikingo otherVikingo) {
 		estado = estado.atacar();
-		otherVikingo.recibirAtaque(ataque.add(estado.getMultiplicadorAtaque()));
+		otherVikingo.recibirAtaque(ataque.multiply(estado.getMultiplicadorAtaque()));
 	}
 
 	@Override
