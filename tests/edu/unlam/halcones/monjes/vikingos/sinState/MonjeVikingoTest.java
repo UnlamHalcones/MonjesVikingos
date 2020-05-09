@@ -4,13 +4,6 @@ import static org.junit.Assert.assertEquals;
 import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
-import edu.unlam.halcones.monjes.vikingos.conState.MonjeVikingo;
-import edu.unlam.halcones.monjes.vikingos.conState.Vikingo;
-import edu.unlam.halcones.monjes.vikingos.conState.estados.Berserker;
-import edu.unlam.halcones.monjes.vikingos.conState.estados.Calmado;
-import edu.unlam.halcones.monjes.vikingos.conState.estados.Colerico;
-import edu.unlam.halcones.monjes.vikingos.conState.estados.Normal;
-
 public class MonjeVikingoTest {
 
 	MonjeVikingo monje;
@@ -22,13 +15,13 @@ public class MonjeVikingoTest {
 
 	@Test
 	public void iniciaNormal() {
-		assertEquals(new Normal(), monje.getEstado());
+		assertEquals("normal", monje.getEstado());
 	}
 
 	@Test
 	public void quedaCalmadoSiMeditaEstandoNormal() {
 		monje.meditar();
-		assertEquals(new Calmado(), monje.getEstado());
+		assertEquals("calmado", monje.getEstado());
 	}
 
 	@Test
@@ -36,20 +29,20 @@ public class MonjeVikingoTest {
 		Vikingo otroVikingo = new MonjeVikingo();
 		monje.meditar();
 		monje.atacar(otroVikingo);
-		assertEquals(new Normal(), monje.getEstado());
+		assertEquals("normal", monje.getEstado());
 	}
 
 	@Test
 	public void quedaColericoCuandoRecibeUnAtaque() {
 		monje.recibirAtaque(new BigDecimal(1));
-		assertEquals(new Colerico(), monje.getEstado());
+		assertEquals("colerico", monje.getEstado());
 	}
 
 	@Test
 	public void quedaBerserkerCuandoRecibeDosAtaques() {
 		monje.recibirAtaque(new BigDecimal(1));
 		monje.recibirAtaque(new BigDecimal(2));
-		assertEquals(new Berserker(), monje.getEstado());
+		assertEquals("berserker", monje.getEstado());
 	}
 	
 	@Test
@@ -57,14 +50,14 @@ public class MonjeVikingoTest {
 		monje.recibirAtaque(new BigDecimal(1));
 		monje.recibirAtaque(new BigDecimal(2));
 		monje.recibirAtaque(new BigDecimal(3));
-		assertEquals(new Berserker(), monje.getEstado());
+		assertEquals("berserker", monje.getEstado());
 	}
 	
 	@Test
 	public void quedaColericoPeroAlMeditarQuedaNormal() {
 		monje.recibirAtaque(new BigDecimal(1));
 		monje.meditar();
-		assertEquals(new Normal(), monje.getEstado());
+		assertEquals("normal", monje.getEstado());
 	}
 
 	@Test
@@ -72,14 +65,14 @@ public class MonjeVikingoTest {
 		monje.recibirAtaque(new BigDecimal(1));
 		monje.recibirAtaque(new BigDecimal(2));
 		monje.meditar();
-		assertEquals(new Normal(), monje.getEstado());
+		assertEquals("normal", monje.getEstado());
 	}	
 
 	@Test
 	public void quedaCalmadoSiMeditaEstandoCalmado() {
 		monje.meditar();
 		monje.meditar();
-		assertEquals(new Calmado(), monje.getEstado());
+		assertEquals("calmado", monje.getEstado());
 	}
 	
 }
