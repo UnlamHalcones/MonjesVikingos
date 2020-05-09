@@ -32,4 +32,9 @@ public abstract class Estado {
 	public BigDecimal getMultiplicadorDefensa() {
 		return multiplicadorDefensa;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return obj.getClass().getName().equals(this.getClass().getName());
+	}
 }
